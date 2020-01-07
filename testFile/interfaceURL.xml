@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<interface>
+    <url name="login">
+        <group>User</group>
+        <module>Member</module>
+        <action>loginCommon</action>
+    </url>
+
+    <url name="userinfo">
+        <group>User</group>
+        <module>Token</module>
+        <action>userinfoCommon</action>
+    </url>
+
+    <url name="orderpage">
+        <group>User</group>
+        <module>Token</module>
+        <action>orderpage</action>
+    </url>
+
+    <url name="createorder">
+        <group>User</group>
+        <module>Token</module>
+        <action>createorder</action>
+    </url>
+
+    <url name="getOrderByNo">
+        <group>User</group>
+        <module>data</module>
+        <module>Token</module>
+        <action>getOrderByNo</action>
+    </url>
+
+    <url name="getOrderPaymentStatus">
+        <group>User</group>
+        <module>data</module>
+        <module>Token</module>
+        <action>getOrderPaymentStatus</action>
+    </url>
+
+    <url name="getEstimateFee">
+        <group>User</group>
+        <module>Token</module>
+        <action>getEstimateFee</action>
+    </url>
+
+    <url name="getAirplaneInfoList">
+        <group>User</group>
+        <module>Member</module>
+        <action>getAirplaneInfoList</action>
+    </url>
+
+    <url name="voucherByCode">
+        <group>User</group>
+        <module>Member</module>
+        <action>voucherByCode</action>
+    </url>
+
+    <url name="voucherByStatus">
+        <group>User</group>
+        <module>Address</module>
+        <action>voucherByStatus</action>
+    </url>
+
+    <url name="voucherForOrder">
+        <group>User</group>
+        <module>Address</module>
+        <action>voucherForOrder</action>
+    </url>
+
+    <url name="cancelOrder">
+        <group>User</group>
+        <module>Address</module>
+        <action>cancelOrder</action>
+    </url>
+</interface>
