@@ -1,11 +1,13 @@
 from common.readExcel import ReadExcel
 import os
 import unittest,requests
+from readConfig import ReadConfig
 import yaml
 from ddt import ddt,data
 from common.readRequests import SendRequests
 
-path = os.path.join(os.path.dirname(os.getcwd()),'resource','test_api2.xlsx')
+baseUrl = ReadConfig().get_config('HTTP',"newurl")
+path = os.path.join(os.path.dirname(os.getcwd()),'resource','test_api1.xlsx')
 testcast = ReadExcel.readExcel(path,'login')
 
 #获取根目录
@@ -21,7 +23,7 @@ class DdtTest(unittest.TestCase):
 
     @data(*testcast)
     def test_api(self,data):
-        re = SendRequests().sendRequests(self.s,data)
+        re = SendRequests().sendRequests(self.s,data,baseUrl)
         true_status = int(re['status'])
 
         if true_status == 1:

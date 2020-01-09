@@ -5,7 +5,7 @@ from common.read_token import get_token
 from ddt import ddt,data
 from common.readRequests import SendRequests
 
-path = os.path.join(os.path.dirname(os.getcwd()),'resource','test_api2.xlsx')
+path = os.path.join(os.path.dirname(os.getcwd()),'resource','test_api1.xlsx')
 testcast = ReadExcel.readExcel(path,'orderpage')
 
 @ddt
@@ -17,8 +17,7 @@ class TestOrderPage(unittest.TestCase):
 
     @data(*testcast)
     def test_api(self,data):
-        flag = True
-        expect_result = data['expect_result'].split(':')[1]
+        expect_result = int(data['expect_result'].split(':')[1])
         # 获取token 并放在yaml上
         token = get_token()
         print('yaml中的token:%s'%token)
@@ -26,12 +25,9 @@ class TestOrderPage(unittest.TestCase):
         print('login_token:%s' % data)
         re = SendRequests().sendRequests(self.s,eval(data))
         true_status = int(re['status'])
-        if str(true_status == 1) & "".join(re['data'] != ''):
-            flag = False
-            print('ddt中数据为:%s'%true_status)
-            self.assertTrue(flag,'实际返回数据为:%s'%re)
-        elif str(true_status == 1) & "".join(re['data'] != ''):
-            self.assertEqual(true_status,int(expect_result),'实际返回数据为:%s'%re)
+
+        self.assertEqual(expect_result,true_status,'实际返回数据为:%s'%re)
+
 
 
 if __name__ == '__main__':

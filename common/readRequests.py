@@ -3,7 +3,7 @@ import json
 
 class SendRequests():
 
-    def sendRequests(self,s,apiData):
+    def sendRequests(self,s,apiData,baseurl):
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         url = apiData['url']
         method = apiData['method']
@@ -14,7 +14,7 @@ class SendRequests():
             pass
 
 
-        res = s.request(url = url,json = json.loads(body),headers=json.loads(header),method = method,verify=False)
+        res = s.request(url = baseurl+url,json = json.loads(body),headers=json.loads(header),method = method,verify=False)
         resultJson = res.json()
         print('返回数据为111:%s' % resultJson)
         return resultJson
